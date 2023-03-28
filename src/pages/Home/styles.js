@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    max-width:100%;
+    max-width: 100%;
     height: 100vh;
 
     display: grid;
@@ -79,5 +79,8 @@ export const Banner = styled.section`
 `
 
 export const Dishes = styled.div`
+    max-width: 120rem;
+    
     padding: 6.4rem 3rem;
+    margin: 0 auto;
 `
