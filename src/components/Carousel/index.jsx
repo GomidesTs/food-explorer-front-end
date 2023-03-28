@@ -1,27 +1,20 @@
-import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Navigation } from 'swiper'
+import { Navigation, Pagination, A11y} from 'swiper'
+import { Swiper } from 'swiper/react'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import 'swiper/css/a11y'
 import { Container } from './styles'
 
-export function Carousel() {
-    SwiperCore.use([Navigation])
-
+export function Carousel({ settings, children }) {
     return (
         <Container>
             <Swiper
-                slidesPerView={3}
-                spaceBetween={30}
-                loop={true}
-                navigation={true}
+                modules={[Navigation, Pagination, A11y]}
+                {...settings}
             >
-                <SwiperSlide>Slide 1</SwiperSlide>
-                <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
-                <SwiperSlide>Slide 5</SwiperSlide>
-                <SwiperSlide>Slide 6</SwiperSlide>
+                {children}
             </Swiper>
         </Container>
     )
