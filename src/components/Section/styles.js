@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.section`
     width: 100%;
 
-    padding-top: 3rem;
+    padding: 3rem 0 2rem;
     
     > h2{
         width: 100%;
