@@ -1,12 +1,24 @@
+import { SwiperSlide } from 'swiper/react'
+
 import { Container, Content, Banner, Dishes } from './styles'
 
 import { Header } from '../../components/Header'
 import { Section } from '../../components/Section'
 import { Footer } from './../../components/Footer'
+import { Carousel } from './../../components/Carousel'
+import { Card } from './../../components/Card'
 
 import Food from '../../assets/foods.png'
 
+
 export function Home() {
+    const settings = {
+        spaceBetween: 50,
+        slidesPerView: 3,
+        navigation: true,
+        loop: true
+    }
+
     return (
         <Container>
             <Header />
@@ -28,14 +40,74 @@ export function Home() {
                     <Section
                         title='Refeições'
                     />
+                    <Carousel settings={settings}>
+                        <SwiperSlide>
+                            <Card />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Card />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Card />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Card />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Card />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Card />
+                        </SwiperSlide>
+                    </Carousel>
 
                     <Section
                         title='Sobremesas'
                     />
+                    <Carousel settings={settings}>
+                        <SwiperSlide>
+                            <Card />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Card />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Card />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Card />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Card />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Card />
+                        </SwiperSlide>
+                    </Carousel>
 
                     <Section
                         title='Bebidas'
                     />
+                    <Carousel settings={settings}>
+                        <SwiperSlide>
+                            <Card />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Card />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Card />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Card />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Card />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Card />
+                        </SwiperSlide>
+                    </Carousel>
                 </Dishes>
 
                 <Footer />
