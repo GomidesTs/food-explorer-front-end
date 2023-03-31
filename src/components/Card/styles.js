@@ -45,6 +45,10 @@ export const Content = styled.div`
         }
     }
 
+    a {
+        color: ${({theme}) => theme.COLORS.LIGHT_200};
+    }
+
     h2 {
         grid-row: 3;
         grid-column: 1;
