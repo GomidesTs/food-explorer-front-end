@@ -1,30 +1,38 @@
+import { Link } from 'react-router-dom'
 import { RiHeartLine, RiArrowRightSLine, RiSubtractFill, RiAddFill } from "react-icons/ri";
 
 import { Container, Content, Action } from './styles'
 
 import { Button } from "../Button";
 
-import Dish from '../../assets/salad.png'
+import { api } from '../../services/api'
 
-export function Card({cards}) {
+import NotFound from '../../assets/notFound.svg'
+
+export function Card({ data, ...rest }) {
+    const imageURL = data.image ? `${api.defaults.baseURL}/files/${data.image}` : NotFound
+
     return (
-        <Container>
+        <Container {...rest}>
             <Content>
-                <img src={Dish} alt="" />
+                <Link to={`/details/${data.id}`}>
+                    <img src={imageURL} alt={data.title} />
+                </Link>
 
                 <RiHeartLine />
-
-                <h2>
-                    Salada Ravanello
-                    <RiArrowRightSLine />
-                </h2>
+                <Link to={`/details/${data.id}`}>
+                    <h2>
+                        {data.title}
+                        <RiArrowRightSLine />
+                    </h2>
+                </Link>
 
                 <p>
-                    Rabanetes, folhas verdes e molho agridoce salpicados com gergelim
+                    {data.description}
                 </p>
 
                 <span>
-                    R$ 49,97
+                    R$ {data.price}
                 </span>
 
                 <Action>
