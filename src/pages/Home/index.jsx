@@ -16,11 +16,23 @@ import Food from '../../assets/foods.png'
 
 export function Home() {
     const settings = {
-        spaceBetween: 50,
-        slidesPerView: 3,
         navigation: true,
-        loop: true
-    }
+        loop: true,
+        breakpoints: {
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 20
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 30
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 40
+          }
+        }
+      }
 
     const [dishes, setDishes] = useState([])
     const [search, setSearch] = useState('')
