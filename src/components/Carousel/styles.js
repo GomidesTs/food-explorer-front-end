@@ -24,7 +24,7 @@ export const Container = styled.div`
 
     .swiper-button-next,
     .swiper-button-prev {
-        width: 3rem;
+        width: 4rem;
         height: 70rem;
         
         color: ${({ theme }) => theme.COLORS.CAKE_200};
@@ -33,14 +33,14 @@ export const Container = styled.div`
 
         transition: .5s ease;
 
-        margin: -35.6rem -1rem;
-        
+        margin: -37rem -1rem;
+
         &:hover {
             color: ${({ theme }) => theme.COLORS.CAKE_100};
         }
-    }
 
-    .swiper-pagination-bullet {
-        background-color: ${({ theme }) => theme.COLORS.CAKE_100};
+        &::after {
+           font-size: clamp(1.6rem, 15vw, 3rem);
+        }
     }
 `
