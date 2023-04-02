@@ -1,9 +1,11 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { RiHeartLine, RiArrowRightSLine, RiSubtractFill, RiAddFill } from "react-icons/ri";
+import { RiHeartLine, RiArrowRightSLine, RiSubtractFill, RiAddFill } from 'react-icons/ri';
 
 import { Container, Content, Action } from './styles'
 
-import { Button } from "../Button";
+import { Button } from '../Button'
+import { QuantityProducts } from '../QuantityProducts'
 
 import { api } from '../../services/api'
 
@@ -37,9 +39,7 @@ export function Card({ data, ...rest }) {
 
                 <Action>
                     <div>
-                        <RiSubtractFill />
-                        <span>01</span>
-                        <RiAddFill />
+                       <QuantityProducts />
                     </div>
                     <Button
                         title='incluir'

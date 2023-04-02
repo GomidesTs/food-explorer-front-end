@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from "react-router-dom"
-import { RiArrowLeftSLine, RiAddFill, RiSubtractFill } from 'react-icons/ri'
+import { RiArrowLeftSLine } from 'react-icons/ri'
 
 import { Container, Content, Dish, Action } from './styles'
 
@@ -8,12 +8,13 @@ import { Header } from './../../components/Header'
 import { Footer } from './../../components/Footer'
 import { ButtonText } from './../../components/ButtonText'
 import { Ingredients } from './../../components/Ingredients'
+import { Button } from '../../components/Button'
+import { QuantityProducts } from '../../components/QuantityProducts'
 
 import { api } from '../../services/api'
 
 import NotFound from '../../assets/notFound.svg'
 
-import { Button } from './../../components/Button'
 
 export function Details() {
     const [dish, setDish] = useState(null)
@@ -56,28 +57,20 @@ export function Details() {
                                 <p>{dish.description}</p>
 
                                 {
-                                    dish.ingredients.map(ingredient =>(
-                                        <Ingredients 
-                                        key={String(ingredient.id)}
-                                        title={ingredient.name}
+                                    dish.ingredients.map(ingredient => (
+                                        <Ingredients
+                                            key={String(ingredient.id)}
+                                            title={ingredient.name}
                                         />
                                     ))
                                 }
                                 <Action>
                                     <div>
-                                        <ButtonText
-                                            icon={RiSubtractFill}
-                                        />
-
-                                        <span>01</span>
-
-                                        <ButtonText
-                                            icon={RiAddFill}
-                                        />
+                                        <QuantityProducts />
                                     </div>
 
                                     <Button
-                                        title='incluir'
+                                        title={`Incluir ∙ R$ ${dish.price}`}
                                         style={
                                             {
                                                 maxHeight: 48,
