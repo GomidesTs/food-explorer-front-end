@@ -1,30 +1,28 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    max-width: 100%;
+    width: 100%;
 `
 
 export const Content = styled.div`
-    padding: 2.5rem;
+    padding: 2rem;
 
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: repeat(6, auto);
-    gap: 1.5rem;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
        
     text-align: center;
 
     img {
-        grid-row: 2;
-        grid-column: 1;
-
-        width: 20rem;
-        height: 20rem;
+        width: clamp(9rem, 15vw, 20rem);
+        height: clamp(9rem, 15vw, 20rem);
 
         object-fit: fill;
 
         cursor: pointer;
-        
+
         transition: .5s ease-in-out;
 
         &:hover {
@@ -33,9 +31,9 @@ export const Content = styled.div`
     }
 
     > svg {
-        grid-row-start: 1;
-        grid-column: 2;
-        
+        position: absolute;
+        right: 0;
+        top: 0;
         cursor: pointer;
         
         transition: .5s ease;
@@ -50,17 +48,14 @@ export const Content = styled.div`
     }
 
     h2 {
-        grid-row: 3;
-        grid-column: 1;
-
-        font-size: 2rem;
-
         display: flex;
         align-items: center;
-
+        justify-content: center;
         cursor: pointer;
 
         transition: .5s ease;
+
+        font-size: clamp(1.4rem, 5vw, 2.2rem);
 
         &:hover {
             color: ${({theme}) => theme.COLORS.CAKE_200};
@@ -68,30 +63,33 @@ export const Content = styled.div`
     }
 
     p {
-        grid-row: 4;
-        grid-column: 1;
+       display: none;
     } 
 
-    span {
-        grid-row: 5;
-        grid-column: 1;
+    .price {
+        font-size: clamp(1.6rem, 5vw, 3.2rem);
+        color: ${({theme}) => theme.COLORS.CAKE_100};
     } 
+
+    @media only screen and (min-width: 1000px) {
+        p {
+            display: block;
+            font-size: 1.4rem;
+        }
+    }
 `
 
 export const Action = styled.span`
-    grid-row: 6;
-    grid-column: 1;
-
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 3.2rem;
-
-    padding-top: 4rem;
+    gap: 1.6rem;
 
     > div {
-        display: flex;
-        align-items: center;
-        gap: 1.4rem;
-        cursor: pointer;
+        width: 100%;
+    }
+
+    @media only screen and (min-width: 1000px) {
+        flex-direction: row;
     }
 `
