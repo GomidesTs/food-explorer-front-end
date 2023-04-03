@@ -1,4 +1,9 @@
-import { Container, Form } from './styles';
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+
+import { useAuth } from '../../hooks/auth'
+
+import { Container, Form } from './styles'
 
 import { Button } from './../../components/Button'
 import { Input } from '../../components/Input'
@@ -6,6 +11,15 @@ import { Input } from '../../components/Input'
 import LogoFoodExplore from '../../assets/LogoFoodExplore.svg'
 
 export function SignIn() {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const { signIn, loading } = useAuth()
+
+    function handleSignIn() {
+        signIn({ email, password })
+    }
+
     return (
         <Container>
             <img src={LogoFoodExplore} alt='Logo do restaurante fictício Food Explore, este logo tem um losango na cor azul-escuro e ao lago escrito Food Explore na cor branca.' />
@@ -22,6 +36,7 @@ export function SignIn() {
                             id='email'
                             type='text'
                             placeholder='exemplo@exemplo.com.br'
+                            onChange={e => setEmail(e.target.value)}
                         />
                     </div>
 
@@ -32,17 +47,20 @@ export function SignIn() {
                             id='password'
                             type='text'
                             placeholder='No mínimo 6 caracteres'
+                            onChange={e => setPassword(e.target.value)}
                         />
                     </div>
 
                     <Button
-                        title='Entrar'
+                        title={loading ? "Entrando" : "Entrar"}
+                        onClick={handleSignIn}
+                        disabled={loading}
                     />
                 </fieldset>
 
-                <a href="#">
+                <Link to="/register">
                     Criar uma conta
-                </a>
+                </Link>
             </Form>
         </Container>
     )

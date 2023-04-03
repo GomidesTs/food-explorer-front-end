@@ -1,11 +1,11 @@
 import { Container, Form } from './styles';
 
-import { Button } from './../../components/Button'
+import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
 
 import LogoFoodExplore from '../../assets/LogoFoodExplore.svg'
 
-export function SingUp() {
+export function SignUp() {
     return (
         <Container>
             <img src={LogoFoodExplore} alt='Logo do restaurante fictício Food Explore, este logo tem um losango na cor azul-escuro e ao lago escrito Food Explore na cor branca.' />
