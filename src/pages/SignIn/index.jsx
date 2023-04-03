@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { RiEyeCloseLine, RiEyeLine } from 'react-icons/ri'
 
 import { useAuth } from '../../hooks/auth'
 
@@ -13,11 +14,21 @@ import LogoFoodExplore from '../../assets/LogoFoodExplore.svg'
 export function SignIn() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
+    const [showPassword, setShowPassword] = useState(false)
     const { signIn, loading } = useAuth()
 
     function handleSignIn() {
         signIn({ email, password })
+    }
+
+    function handleKeyDown(e) {
+        if (e.key === "Enter") {
+            handleSignIn()
+        }
+    }
+
+    function handleTogglePassword() {
+        setShowPassword(!showPassword)
     }
 
     return (
@@ -43,12 +54,19 @@ export function SignIn() {
                     <div className='information'>
                         <label htmlFor='password'>Senha</label>
 
-                        <Input
-                            id='password'
-                            type='text'
-                            placeholder='No mínimo 6 caracteres'
-                            onChange={e => setPassword(e.target.value)}
-                        />
+                        <div>
+                            <Input
+                                id='password'
+                                type={showPassword ? 'text' : 'password'}
+                                placeholder='No mínimo 6 caracteres'
+                                onChange={e => setPassword(e.target.value)}
+                                onKeyDown={handleKeyDown}
+                            />
+
+                            <span onClick={handleTogglePassword}>
+                                {showPassword ? <RiEyeCloseLine size={22} />: <RiEyeLine size={22} /> }
+                            </span>
+                        </div>
                     </div>
 
                     <Button
