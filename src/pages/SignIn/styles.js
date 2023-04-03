@@ -51,6 +51,19 @@ export const Form = styled.form`
                 display: inline-block;
                 padding-bottom: .8rem;
             }
+
+            > div {
+                display: grid;
+                position: relative;
+
+               span {
+                position: absolute;
+                right: .5rem;
+                bottom: 50%;
+
+                background-color: ${({theme})=> theme.COLORS.DARK_200};
+               }
+            }
         }
     }
 
@@ -63,4 +76,3 @@ export const Form = styled.form`
         padding: 6.4rem;
     }
 `
-
