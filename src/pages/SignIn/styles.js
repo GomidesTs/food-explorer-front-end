@@ -59,7 +59,7 @@ export const Form = styled.form`
                span {
                 position: absolute;
                 right: .5rem;
-                bottom: 50%;
+                bottom: 43%;
 
                 background-color: ${({theme})=> theme.COLORS.DARK_200};
                }
