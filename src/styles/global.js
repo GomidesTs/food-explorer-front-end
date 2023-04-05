@@ -11,6 +11,7 @@ export default createGlobalStyle`
     font-size: 62.5%;
     
     -webkit-font-smoothing: antialiased;
+    user-select: none;
 }
 
 body {
