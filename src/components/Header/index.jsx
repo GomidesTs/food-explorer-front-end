@@ -1,20 +1,30 @@
-import { FiSearch, FiUser, FiLogOut } from 'react-icons/fi';
+import { Link } from 'react-router-dom'
+import { FiSearch, FiUser, FiLogOut } from 'react-icons/fi'
+
+import { api } from '../../services/api'
+import { useAuth } from '../../hooks/auth'
 
 import { Container, Content, Search, Profile, Logout } from './styles'
 
 import LogoFoodExplore from '../../assets/LogoFoodExplore.svg'
+import avatarPlaceholder from '../../assets/avatarPlaceholder.svg'
+
 
 export function Header() {
+    const { signOut, user } = useAuth()
+    
+    const avatarURL = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
+
     return (
         <Container>
             <Content>
-                <a href='/'>
+                <Link to='/'>
                     <img src={LogoFoodExplore} alt='Logo do restaurante fictício Food Explore, este logo tem um losango na cor azul-escuro e ao lago escrito Food Explore na cor branca.' />
-                </a>
+                </Link>
             </Content>
 
             <Search>
-                <label htmlFor="search">
+                <label htmlFor='search'>
                     <FiSearch size={24} />
 
                     <input
@@ -27,10 +37,12 @@ export function Header() {
             </Search>
 
             <Profile>
-                <FiUser size={24} />
+                <Link to={'/profile'}>
+                    <img src={avatarURL} alt="" />
+                </Link>
             </Profile>
-            
-            <Logout>
+
+            <Logout to='/' onClick={signOut}>
                 <FiLogOut size={24} />
             </Logout>
 
