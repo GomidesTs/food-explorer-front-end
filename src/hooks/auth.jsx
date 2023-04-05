@@ -16,7 +16,7 @@ function AuthProvider({ children }) {
             const { user, token } = response.data
 
             localStorage.setItem('@foodExplorer:user', JSON.stringify(user))
-            localStorage.setItem('@foodExplore:token', token)
+            localStorage.setItem('@foodExplorer:token', token)
 
             api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
@@ -46,17 +46,19 @@ function AuthProvider({ children }) {
                 setLoading(true)
 
                 const fileUpdateForm = new FormData()
+
                 fileUpdateForm.append('avatar', avatarFile)
 
-                const response = await api.patch('users/avatar', fileUpdateForm)
+                const response = await api.patch('/users/avatar', fileUpdateForm)
 
                 user.avatar = response.data.avatar
             }
 
+
             await api.put('/users', user)
 
-            localStorage.setItem({ user, token: data.token })
-
+            localStorage.setItem('@foodExplorer:user', JSON.stringify(user))
+            
             alert('Perfil atualizado com sucesso!')
 
             setLoading(false)
