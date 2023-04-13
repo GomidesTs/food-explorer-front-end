@@ -30,7 +30,7 @@ export const Content = styled.div`
         }
     }
 
-    > svg {
+    > .decision {
         position: absolute;
         right: 0;
         top: 0;
@@ -40,6 +40,14 @@ export const Content = styled.div`
 
         &:hover {
             fill: ${({theme}) => theme.COLORS.TOMATO_400};
+        }
+    }
+
+    .edit {
+        transition: .5s ease;
+
+        &:hover {
+            fill: ${({theme}) => theme.COLORS.CAKE_100};
         }
     }
 
@@ -67,7 +75,7 @@ export const Content = styled.div`
     } 
 
     .price {
-        font-size: clamp(1.6rem, 5vw, 3.2rem);
+        font-size: clamp(1.2rem, 5vw, 3.2rem);
         color: ${({theme}) => theme.COLORS.CAKE_100};
     } 
 
