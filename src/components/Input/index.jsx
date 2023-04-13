@@ -5,7 +5,7 @@ export function Input({ icon: Icon, ...rest }) {
         <Container>
                 {Icon && <Icon size={20} />}
 
-                <input {...rest} />
+                <input {...rest} autocomplete='off'/>
         </Container>
     )
 }
