@@ -12,9 +12,8 @@ import LogoFoodExplore from '../../assets/LogoFoodExplore.svg'
 import avatarPlaceholder from '../../assets/avatarPlaceholder.svg'
 
 
-export function Header() {
+export function Header({search}) {
     const { signOut, user } = useAuth()
-
     const avatarURL = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
     return (
@@ -41,6 +40,8 @@ export function Header() {
                         name='search'
                         id='search'
                         placeholder='Busque por pratos ou ingredientes'
+                        autocomplete='off'
+                        onChange={e => { search(e.target.value) }}
                     />
                 </label>
             </Search>
@@ -55,15 +56,19 @@ export function Header() {
                 {
                     user.isAdmin
                         ?
-                        <Button
-                        title='Novo prato'
-                        icon={RiAddLine}
-                        />
+                        <Link to={'/createdish'}>
+                            <Button
+                                title='Novo prato'
+                                icon={RiAddLine}
+                            />
+                        </Link>
                         :
-                        <Button
-                            title={`Pedidos (0)`}
-                            icon={RiDraftLine}
-                        />
+                        <Link to={'/'}>
+                            <Button
+                                title={`Pedidos (0)`}
+                                icon={RiDraftLine}
+                            />
+                        </Link>
                 }
             </Dish>
 

@@ -44,11 +44,11 @@ export function Home() {
         }
 
         fetchDishes()
-    }, [])
+    }, [search])
 
     return (
         <Container>
-            <Header />
+            <Header search={setSearch}/>
 
             <Content>
                 <Banner>
