@@ -29,7 +29,7 @@ export function CreateDish() {
                     icon={RiArrowLeftSLine}
                     onClick={handleBack}
                 />
-                
+
                 <Form>
                     <fieldset>
                         <legend>Adicionar prato</legend>
@@ -41,7 +41,7 @@ export function CreateDish() {
                                     Selecione imagem
                                 </label>
 
-                                <Input
+                                <input
                                     id='image'
                                     type='file'
                                     name='image'
@@ -78,6 +78,7 @@ export function CreateDish() {
                                     isNew
                                     id='ingredients'
                                     placeholder='Adicionar'
+                                    autocomplete='off'
                                 />
                             </div>
                         </div>
