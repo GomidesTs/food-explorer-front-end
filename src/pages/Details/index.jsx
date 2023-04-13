@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from "react-router-dom"
+import {Link, useParams, useNavigate } from 'react-router-dom'
 import { RiArrowLeftSLine } from 'react-icons/ri'
+
+import { api } from '../../services/api'
+import { useAuth } from '../../hooks/auth'
 
 import { Container, Content, Dish, Action } from './styles'
 
@@ -11,12 +14,13 @@ import { Ingredients } from './../../components/Ingredients'
 import { Button } from '../../components/Button'
 import { QuantityProducts } from '../../components/QuantityProducts'
 
-import { api } from '../../services/api'
 
 import NotFound from '../../assets/notFound.svg'
 
 
 export function Details() {
+    const { user } = useAuth()
+
     const [dish, setDish] = useState(null)
     const params = useParams()
     const navigate = useNavigate()
@@ -65,20 +69,39 @@ export function Details() {
                                     ))
                                 }
                                 <Action>
-                                    <div>
-                                        <QuantityProducts />
-                                    </div>
+                                    {
+                                        user.isAdmin ?
+                                        <Link>
+                                        <Button
+                                                    title='Editar prato'
+                                                    style={
+                                                        {
+                                                            maxHeight: 48,
+                                                            width: 192,
+                                                            padding: '1.2rem .4rem'
+                                                        }
+                                                    }
+                                                />
+                                        </Link>
+                                        :
+                                            <>
+                                                <div>
+                                                    <QuantityProducts />
+                                                </div>
 
-                                    <Button
-                                        title={`Incluir ∙ R$ ${dish.price}`}
-                                        style={
-                                            {
-                                                maxHeight: 48,
-                                                width: 192,
-                                                padding: '1.2rem .4rem'
-                                            }
-                                        }
-                                    />
+                                                <Button
+                                                    title={`Incluir ∙ R$ ${dish.price}`}
+                                                    style={
+                                                        {
+                                                            maxHeight: 48,
+                                                            width: 192,
+                                                            padding: '1.2rem .4rem'
+                                                        }
+                                                    }
+                                                />
+                                            </>
+                                    }
+
                                 </Action>
                             </div>
                         </div>

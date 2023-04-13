@@ -1,17 +1,20 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { RiHeartLine, RiArrowRightSLine, RiSubtractFill, RiAddFill } from 'react-icons/ri';
+import { RiHeartLine, RiArrowRightSLine, RiEditLine } from 'react-icons/ri';
+
+import { api } from '../../services/api'
+import { useAuth } from '../../hooks/auth'
 
 import { Container, Content, Action } from './styles'
 
 import { Button } from '../Button'
 import { QuantityProducts } from '../QuantityProducts'
 
-import { api } from '../../services/api'
 
 import NotFound from '../../assets/notFound.svg'
 
 export function Card({ data, ...rest }) {
+    const { user } = useAuth()
     const imageURL = data.image ? `${api.defaults.baseURL}/files/${data.image}` : NotFound
 
     return (
@@ -21,37 +24,60 @@ export function Card({ data, ...rest }) {
                     <img src={imageURL} alt={data.title} />
                 </Link>
 
-                <RiHeartLine />
-                <Link to={`/details/${data.id}`}>
-                    <h2>
-                        {data.title}
-                        <RiArrowRightSLine />
-                    </h2>
-                </Link>
+                {
+                    user.isAdmin
+                        ?
+                        <>
+                            <Link to={`/details/${data.id}`} className='decision'>
+                                <RiEditLine className='edit' />
+                            </Link>
 
-                <p>
-                    {data.description}
-                </p>
+                            <Link to={`/details/${data.id}`}>
+                                <h2>
+                                    {data.title}
+                                    <RiArrowRightSLine />
+                                </h2>
+                            </Link>
 
-                <span>
-                    R$ {data.price}
-                </span>
+                            <p>
+                                {data.description}
+                            </p>
 
-                <Action>
-                    <div>
-                       <QuantityProducts />
-                    </div>
-                    <Button
-                        title='incluir'
-                        style={
-                            {
-                                maxHeight: 48,
-                                width: 94,
-                                padding: '1.2rem .4rem'
-                            }
-                        }
-                    />
-                </Action>
+                            <span className='price'>
+                                R$ {data.price}
+                            </span>
+
+                        </>
+                        :
+                        <>
+                            <RiHeartLine size={24} className='decision' />
+
+                            <Link to={`/details/${data.id}`}>
+                                <h2>
+                                    {data.title}
+                                    <RiArrowRightSLine />
+                                </h2>
+                            </Link>
+
+                            <p>
+                                {data.description}
+                            </p>
+
+                            <span className='price'>
+                                R$ {data.price}
+                            </span>
+
+                            <Action>
+                                <QuantityProducts />
+
+                                <div>
+                                    <Button
+                                        title='incluir'
+                                    />
+                                </div>
+                            </Action>
+                        </>
+                }
             </Content>
         </Container>
     )
