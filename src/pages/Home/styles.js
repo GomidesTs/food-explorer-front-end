@@ -64,7 +64,7 @@ export const Banner = styled.section`
         
         .card {
             .title {
-                width: 100vh;
+                width: 100%;
                 height: 26rem;
 
                 padding: 8.7rem 4.6rem 0 0;
