@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { RiArrowLeftSLine, RiUploadLine } from 'react-icons/ri'
 
 import { Container, Content, Form } from './styles'
@@ -8,10 +9,16 @@ import { Footer } from '../../components/Footer'
 import { ButtonText } from '../../components/ButtonText'
 import { Input } from '../../components/Input'
 import { NewIngredients } from '../../components/NewIngredients'
-import { Button } from './../../components/Button/index';
+import { Button } from './../../components/Button/index'
 
 export function CreateDish() {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false)
+
+    const navigate = useNavigate()
+
+    function handleBack() {
+        navigate(-1)
+    }
 
     return (
         <Container>
@@ -20,7 +27,9 @@ export function CreateDish() {
                 <ButtonText
                     title='Voltar'
                     icon={RiArrowLeftSLine}
+                    onClick={handleBack}
                 />
+                
                 <Form>
                     <fieldset>
                         <legend>Adicionar prato</legend>
