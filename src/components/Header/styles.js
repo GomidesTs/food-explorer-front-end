@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.header`
     grid-area: header;
@@ -13,11 +14,23 @@ export const Container = styled.header`
 `
 
 export const Content = styled.div`
-    display:flex;
+    display: flex;
     
     align-items: center;
-
+    
     white-space: nowrap;
+    
+    a {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        
+        color: ${({ theme }) => theme.COLORS.CAKE_100};
+
+        img {
+            width: clamp(1.4rem, 25vh, 20rem);
+        }
+    }
 `
 
 export const Search = styled.div`
@@ -68,16 +81,23 @@ export const Profile = styled.div`
 
     cursor: pointer;
 
-    svg {
-        color: ${({ theme }) => theme.COLORS.CAKE_200};
-        
-        &:hover {
-            color: ${({ theme }) => theme.COLORS.CAKE_100};
-        }
+    img{
+        width: 3rem;
+        height: 3rem;
+
+        border-radius: 50%;
+
+        object-fit: cover;  
     }
 `
 
-export const Logout = styled.div`
+export const Dish = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
+export const Logout = styled(Link)`
     display: flex;
     align-self: center;
 
