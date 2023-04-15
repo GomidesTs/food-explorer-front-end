@@ -29,7 +29,7 @@ export const Container = styled.div`
     }
 
     > input {
-        max-width: 13rem;
+        max-width: 8rem;
         height: 2.8rem;
 
         border: none;
