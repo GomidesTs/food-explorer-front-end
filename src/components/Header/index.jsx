@@ -26,7 +26,7 @@ export function Header({search}) {
                             ?
                             <p>admin</p>
                             :
-                            <p>Boas compras</p>
+                            <p>Bon appétit</p>
                     }
                 </Link>
             </Content>
