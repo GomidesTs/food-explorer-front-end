@@ -19,11 +19,13 @@ export const Content = styled.div`
         width: clamp(9rem, 15vw, 20rem);
         height: clamp(9rem, 15vw, 20rem);
 
-        object-fit: fill;
+        object-fit: cover;
 
         cursor: pointer;
 
         transition: .5s ease-in-out;
+
+        border-radius: 50%;
 
         &:hover {
             transform: scale(1.09);
@@ -83,6 +85,9 @@ export const Content = styled.div`
         p {
             display: block;
             font-size: 1.4rem;
+
+            height: 5rem;
+            overflow: hidden;
         }
     }
 `
