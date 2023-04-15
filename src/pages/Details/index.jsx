@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import {Link, useParams, useNavigate } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { RiArrowLeftSLine } from 'react-icons/ri'
 
 import { api } from '../../services/api'
@@ -22,13 +22,33 @@ export function Details() {
     const { user } = useAuth()
 
     const [dish, setDish] = useState(null)
+    const [loadingDelete, setLoadingDelete] = useState(false)
     const params = useParams()
     const navigate = useNavigate()
 
     const imageURL = dish ? `${api.defaults.baseURL}/files/${dish.image}` : NotFound
 
     function handleBack() {
-        navigate(-1)
+        navigate('/')
+    }
+
+    async function handleRemoveDish() {
+        setLoadingDelete(true)
+
+        const isConfirm = confirm('Tem certeza que deseja remover este item?')
+
+        if (isConfirm) {
+            await api.delete(`/dishes/${params.id}`)
+                .then(() => {
+                    alert("Item removido com sucesso!")
+
+                    navigate("/")
+
+                    setLoadingDelete(false)
+                })
+        } else {
+            return
+        }
     }
 
     useEffect(() => {
@@ -71,19 +91,20 @@ export function Details() {
                                 <Action>
                                     {
                                         user.isAdmin ?
-                                        <Link>
-                                        <Button
-                                                    title='Editar prato'
-                                                    style={
-                                                        {
-                                                            maxHeight: 48,
-                                                            width: 192,
-                                                            padding: '1.2rem .4rem'
-                                                        }
-                                                    }
+                                            <>
+                                                <Button className='delete'
+                                                    title={loadingDelete ? 'Excluindo prato' : 'Excluir prato'}
+                                                    disabled={loadingDelete}
+                                                    onClick={handleRemoveDish}
                                                 />
-                                        </Link>
-                                        :
+
+                                                <Link to={`/editdish/${dish.id}`}>
+                                                    <Button
+                                                        title='Editar prato'
+                                                    />
+                                                </Link>
+                                            </>
+                                            :
                                             <>
                                                 <div>
                                                     <QuantityProducts />
