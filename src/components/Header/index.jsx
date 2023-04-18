@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { RiSearchLine, RiLoginBoxLine, RiDraftLine, RiAddLine } from 'react-icons/ri'
+import { RiAlignJustify, RiSearchLine, RiLoginBoxLine, RiDraftLine, RiAddLine, RiHeartLine } from 'react-icons/ri'
 
 import { api } from '../../services/api'
 import { useAuth } from '../../hooks/auth'
@@ -12,7 +12,7 @@ import LogoFoodExplore from '../../assets/LogoFoodExplore.svg'
 import avatarPlaceholder from '../../assets/avatarPlaceholder.svg'
 
 
-export function Header({search}) {
+export function Header({ search }) {
     const { signOut, user } = useAuth()
     const avatarURL = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
@@ -36,7 +36,7 @@ export function Header({search}) {
                     <RiSearchLine size={24} />
 
                     <input
-                        type='text'
+                        type='search'
                         name='search'
                         id='search'
                         placeholder='Busque por pratos ou ingredientes'
