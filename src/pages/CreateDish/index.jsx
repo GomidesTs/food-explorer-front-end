@@ -101,7 +101,11 @@ export function CreateDish() {
         ))
 
         await api.post('/dishes', formData)
-            .then(alert('Prato adicionado com sucesso!'))
+            .then(() => {
+                alert('Prato adicionado com sucesso!')
+
+                navigate('/')
+            })
             .catch((error) => {
                 if (error.response) {
                     alert(error.response.data.message)
