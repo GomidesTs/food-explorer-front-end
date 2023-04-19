@@ -92,4 +92,15 @@ export const Action = styled.section`
         align-items: center;
         gap: 1.4rem;
     }
+
+    a {
+        display: inline;
+        width: 100%;
+    }
+
+    .delete {
+        background: none;
+        border: .2rem dashed ${({ theme }) => theme.COLORS.DARK_100};
+        padding: 0;
+    }
 `
