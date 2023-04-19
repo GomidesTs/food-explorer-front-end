@@ -32,24 +32,45 @@ export const Content = styled.div`
         }
     }
 
-    > .decision {
+    .addFavorite {
         position: absolute;
         right: 0;
         top: 0;
         cursor: pointer;
         
-        transition: .5s ease;
+        transition: 1s ease-in-out;
 
         &:hover {
             fill: ${({theme}) => theme.COLORS.TOMATO_400};
         }
     }
 
-    .edit {
-        transition: .5s ease;
+    .favorite {
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+        
+        fill: ${({theme}) => theme.COLORS.TOMATO_400};
+
+        transition: 1s ease;
 
         &:hover {
-            fill: ${({theme}) => theme.COLORS.CAKE_100};
+            fill: ${({theme}) => theme.COLORS.LIGHT_200};
+        }
+    }
+
+    .decision{
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+        .edit {
+            transition: .5s ease;
+    
+            &:hover {
+                fill: ${({theme}) => theme.COLORS.CAKE_100};
+            }
         }
     }
 
