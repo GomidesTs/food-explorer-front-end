@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { RiHeartLine, RiArrowRightSLine, RiEditLine } from 'react-icons/ri';
+import { RiHeartFill, RiArrowRightSLine, RiEditLine } from 'react-icons/ri';
 
 import { api } from '../../services/api'
 import { useAuth } from '../../hooks/auth'
@@ -16,6 +16,47 @@ import NotFound from '../../assets/notFound.svg'
 export function Card({ data, ...rest }) {
     const { user } = useAuth()
     const imageURL = data.image ? `${api.defaults.baseURL}/files/${data.image}` : NotFound
+
+    const [favorite, setFavorite] = useState(false)
+
+    function handleFavorites() {
+        api.post('/favorites', { id: data.id })
+            .then(() => {
+                setFavorite(true)
+                alert('Prato adcionado aos favoritos')
+            })
+            .catch(error => {
+                if (error.response) {
+                    alert(error.response.data.message)
+                } else {
+                    alert('Não foi adcionar prato aos favoritos')
+                }
+            })
+    }
+
+    function handleRemoveFavorite() {
+        api.delete(`/favorites/${data.id}`)
+            .then(() => {
+                setFavorite(false)
+                alert('Prato removido dos favoritos')
+            })
+            .catch(error => {
+                if (error.response) {
+                    alert(error.response.data.message)
+                } else {
+                    alert('Não foi possível remover prato dos favoritos')
+                }
+            })
+    }
+
+    useEffect(() => {
+        async function fetchFavorites() {
+            const response = await api.get(`/favorites/${data.id}`)
+            setFavorite(response.data)
+        }
+
+        fetchFavorites()
+    }, [data.id])
 
     return (
         <Container {...rest}>
@@ -50,7 +91,21 @@ export function Card({ data, ...rest }) {
                         </>
                         :
                         <>
-                            <RiHeartLine size={24} className='decision' />
+                            {
+                                favorite
+                                    ?
+                                    <RiHeartFill 
+                                    size={24} 
+                                    className='favorite'
+                                    onClick={handleRemoveFavorite} 
+                                    />
+                                    :
+                                    <RiHeartFill
+                                        size={24}
+                                        className='addFavorite'
+                                        onClick={handleFavorites}
+                                    />
+                            }
 
                             <Link to={`/details/${data.id}`}>
                                 <h2>
