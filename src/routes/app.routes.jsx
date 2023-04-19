@@ -5,6 +5,7 @@ import { Details } from '../pages/Details'
 import { CreateDish } from '../pages/CreateDish'
 import { EditDish } from '../pages/EditDish'
 import { Profile } from '../pages/Profile'
+import { Favorites } from '../pages/Favorites'
 
 export function AppRoutes() {
     return (
@@ -14,6 +15,7 @@ export function AppRoutes() {
             <Route path='/createdish' element={<CreateDish />} />
             <Route path='/editdish/:id' element={<EditDish />} />
             <Route path='/profile' element={<Profile />} />
+            <Route path='/favorites' element={<Favorites />} />
         </Routes>
     )
 }
