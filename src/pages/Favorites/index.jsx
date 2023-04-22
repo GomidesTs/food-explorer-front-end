@@ -1,41 +1,32 @@
 import { useState, useEffect } from 'react'
-import { SwiperSlide } from 'swiper/react'
 
-import { Container, Content, Banner, Dishes } from './styles'
+import { Container, Content, Dishes, Options, Favorite } from './styles'
 
 import { Header } from '../../components/Header'
 import { Section } from '../../components/Section'
 import { Footer } from './../../components/Footer'
-import { Carousel } from './../../components/Carousel'
-import { Card } from './../../components/Card'
 
 import { api } from '../../services/api'
 
-import Food from '../../assets/foods.png'
-
+import NotFound from '../../assets/notFound.svg'
 
 export function Favorites() {
-    const settings = {
-        navigation: true,
-        loop: true,
-        breakpoints: {
-            640: {
-                slidesPerView: 1,
-                spaceBetween: 20
-            },
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 30
-            },
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 40
-            }
-        }
-    }
-
     const [dishes, setDishes] = useState([])
     const [search, setSearch] = useState('')
+
+    function handleRemoveFavorite(id) {
+        api.delete(`/favorites/${id}`)
+            .then(() => {
+                alert('Prato removido dos favoritos')
+            })
+            .catch(error => {
+                if (error.response) {
+                    alert(error.response.dishes.message)
+                } else {
+                    alert('Não foi possível remover prato dos favoritos')
+                }
+            })
+    }
 
     useEffect(() => {
         async function fetchDishes() {
@@ -44,92 +35,49 @@ export function Favorites() {
         }
 
         fetchDishes()
-    }, [search,dishes])
+    }, [search, dishes])
 
     return (
         <Container>
             <Header search={setSearch} />
 
             <Content>
-                <Banner>
-                    <img src={Food} alt='Biscoitos recheados e coloridos com frutinhas vermelhas e folhas caindo ao seu redor.' />
-
-                    <div className='card'>
-                        <div className='title'>
-                            <h1>Sabores inigualáveis</h1>
-
-                            <span>Sinta o cuidado do preparo com ingredientes selecionados</span>
-                        </div>
-                    </div>
-                </Banner>
-
                 <Dishes>
                     <Section
                         title='Refeições'
                     />
-                    {
-                        dishes.filter(dish => dish.category == 'snack').length > 0 &&
-                        <Carousel settings={settings}>
-                            {
-                                dishes.filter(dish => dish.category == 'snack').map(dish => (
-                                    <SwiperSlide
-                                        key={String(dish.id)}
-                                    >
-                                        <Card
-                                            data={dish}
-                                        />
-                                    </SwiperSlide>
-                                ))
-                            }
+                    <Options>
+                        {
+                            dishes.map(dish => (
+                                <Favorite key={String(dish.id)}>
+                                    <img
+                                        src={
+                                            dish.image
+                                                ?
+                                                `${api.defaults.baseURL}/files/${dish.image}`
+                                                :
+                                                NotFound
+                                        }
+                                        alt={
+                                            dish.image
+                                                ?
+                                                `Imagem de ${dish.title}`
+                                                :
+                                                `Imagem de ${dish.title} não encontrada, foi inserido uma imagem com simbolo de bloqueada azul e vermelho`} />
+                                    <div>
+                                        <h3>{dish.title}</h3>
 
-                        </Carousel>
-                    }
+                                        <button onClick={() => handleRemoveFavorite(dish.id)}>Remover dos Favoritos</button>
+                                    </div>
+                                </Favorite>
+                            ))
+                        }
+                    </Options>
 
-                    <Section
-                        title='Sobremesas'
-                    />
-                    {
-                        dishes.filter(dish => dish.category == 'dessert').length > 0 &&
-                        <Carousel settings={settings}>
-                            {
-                                dishes.filter(dish => dish.category == 'dessert').map(dish => (
-                                    <SwiperSlide
-                                        key={String(dish.id)}
-                                    >
-                                        <Card
-                                            data={dish}
-                                        />
-                                    </SwiperSlide>
-                                ))
-                            }
-
-                        </Carousel>
-                    }
-
-                    <Section
-                        title='Bebidas'
-                    />
-                    {
-                        dishes.filter(dish => dish.category == 'drink').length > 0 &&
-                        <Carousel settings={settings}>
-                            {
-                                dishes.filter(dish => dish.category == 'drink').map(dish => (
-                                    <SwiperSlide
-                                        key={String(dish.id)}
-                                    >
-                                        <Card
-                                            data={dish}
-                                        />
-                                    </SwiperSlide>
-                                ))
-                            }
-
-                        </Carousel>
-                    }
                 </Dishes>
 
-                <Footer />
             </Content>
+            <Footer />
 
         </Container>
     )
