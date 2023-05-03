@@ -23,13 +23,14 @@ export function Details() {
 
     const [dish, setDish] = useState(null)
     const [loadingDelete, setLoadingDelete] = useState(false)
+
     const params = useParams()
     const navigate = useNavigate()
 
     const imageURL = dish ? `${api.defaults.baseURL}/files/${dish.image}` : NotFound
 
     function handleBack() {
-        navigate('/')
+        navigate(-1)
     }
 
     async function handleRemoveDish() {
@@ -47,7 +48,7 @@ export function Details() {
                     setLoadingDelete(false)
                 })
         } else {
-            return
+            setLoadingDelete(false)
         }
     }
 
@@ -106,19 +107,9 @@ export function Details() {
                                             </>
                                             :
                                             <>
-                                                <div>
-                                                    <QuantityProducts />
-                                                </div>
-
-                                                <Button
-                                                    title={`Incluir ∙ R$ ${dish.price}`}
-                                                    style={
-                                                        {
-                                                            maxHeight: 48,
-                                                            width: 192,
-                                                            padding: '1.2rem .4rem'
-                                                        }
-                                                    }
+                                                <QuantityProducts
+                                                    dish_id={dish.id}
+                                                    price={dish.price}
                                                 />
                                             </>
                                     }
