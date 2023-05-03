@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import { Container, Content, Dishes, Options, Favorite } from './styles'
 
@@ -14,8 +15,8 @@ export function Favorites() {
     const [dishes, setDishes] = useState([])
     const [search, setSearch] = useState('')
 
-    function handleRemoveFavorite(id) {
-        api.delete(`/favorites/${id}`)
+    async function handleRemoveFavorite(id) {
+        await api.delete(`/favorites/${id}`)
             .then(() => {
                 alert('Prato removido dos favoritos')
             })
@@ -44,28 +45,33 @@ export function Favorites() {
             <Content>
                 <Dishes>
                     <Section
-                        title='Refeições'
+                        title='Meus Favoritos'
                     />
                     <Options>
                         {
                             dishes.map(dish => (
                                 <Favorite key={String(dish.id)}>
-                                    <img
-                                        src={
-                                            dish.image
-                                                ?
-                                                `${api.defaults.baseURL}/files/${dish.image}`
-                                                :
-                                                NotFound
-                                        }
-                                        alt={
-                                            dish.image
-                                                ?
-                                                `Imagem de ${dish.title}`
-                                                :
-                                                `Imagem de ${dish.title} não encontrada, foi inserido uma imagem com simbolo de bloqueada azul e vermelho`} />
+                                    <Link to={`/details/${dish.id}`}>
+                                        <img
+                                            src={
+                                                dish.image
+                                                    ?
+                                                    `${api.defaults.baseURL}/files/${dish.image}`
+                                                    :
+                                                    NotFound
+                                            }
+                                            alt={
+                                                dish.image
+                                                    ?
+                                                    `Imagem de ${dish.title}`
+                                                    :
+                                                    `Imagem de ${dish.title} não encontrada, foi inserido uma imagem com simbolo de bloqueada azul e vermelho`}
+                                        />
+                                    </Link>
                                     <div>
-                                        <h3>{dish.title}</h3>
+                                        <Link to={`/details/${dish.id}`}>
+                                            <h3>{dish.title}</h3>
+                                        </Link>
 
                                         <button onClick={() => handleRemoveFavorite(dish.id)}>Remover dos Favoritos</button>
                                     </div>
