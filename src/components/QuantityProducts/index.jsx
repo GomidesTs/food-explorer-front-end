@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { RiAddFill, RiSubtractFill } from 'react-icons/ri'
 
+import { api } from '../../services/api'
+
 import { Container } from './styles'
 
 import { ButtonText } from '../ButtonText'
@@ -30,12 +32,23 @@ export function QuantityProducts({ dish_id, price }) {
         setPriceProduct(price * amount)
     }
 
-    function handleAddDish() {
+    async function handleAddDish() {
         if (quantity < 1) {
             alert('Erro: A quantidade mínima é 1 unidade')
             return
         }
-        console.log(dish_id);
+
+        await api.post('/carts', { dish_id, quantity })
+            .then(() => {
+                alert('Prato adicionado com sucesso ao carrinho!')
+            })
+            .catch((error) => {
+                if (error.response) {
+                    alert(error.response.data.message)
+                } else {
+                    alert('Falha ao adicionar prato ao carrinho!')
+                }
+            })
     }
 
     return (
@@ -58,7 +71,10 @@ export function QuantityProducts({ dish_id, price }) {
                             Incluir
                             ${price
                             ?
-                            `∙ ${priceProduct}`
+                            `∙ ${priceProduct.toLocaleString('pt-BR', {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2
+                            })}`
                             :
                             ''
                         }
