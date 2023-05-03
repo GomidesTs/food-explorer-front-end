@@ -7,9 +7,7 @@ import { useAuth } from '../../hooks/auth'
 
 import { Container, Content, Action } from './styles'
 
-import { Button } from '../Button'
 import { QuantityProducts } from '../QuantityProducts'
-
 
 import NotFound from '../../assets/notFound.svg'
 
@@ -85,7 +83,11 @@ export function Card({ data, ...rest }) {
                             </p>
 
                             <span className='price'>
-                                R$ {data.price}
+                                R$ {
+                                    data.price.toLocaleString('pt-BR', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    })}
                             </span>
 
                         </>
@@ -94,10 +96,10 @@ export function Card({ data, ...rest }) {
                             {
                                 favorite
                                     ?
-                                    <RiHeartFill 
-                                    size={24} 
-                                    className='favorite'
-                                    onClick={handleRemoveFavorite} 
+                                    <RiHeartFill
+                                        size={24}
+                                        className='favorite'
+                                        onClick={handleRemoveFavorite}
                                     />
                                     :
                                     <RiHeartFill
@@ -119,17 +121,17 @@ export function Card({ data, ...rest }) {
                             </p>
 
                             <span className='price'>
-                                R$ {data.price}
+                                R$ {
+                                    data.price.toLocaleString('pt-BR', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    })}
                             </span>
 
                             <Action>
-                                <QuantityProducts />
-
-                                <div>
-                                    <Button
-                                        title='incluir'
-                                    />
-                                </div>
+                                <QuantityProducts
+                                    dish_id={data.id}
+                                />
                             </Action>
                         </>
                 }
