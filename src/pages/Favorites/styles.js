@@ -35,6 +35,15 @@ export const Options = styled.div`
     justify-content: space-around;
     gap: 3.6rem;
 
+    a {
+        color: ${({theme})=> theme.COLORS.LIGHT_200};
+        transition: all 1s ease;
+        
+        &:hover {
+            color: ${({theme})=> theme.COLORS.CAKE_200};
+        }
+    }
+
     @media only screen and (min-width: 600px) {
         flex-direction: row;
         justify-content: start;
