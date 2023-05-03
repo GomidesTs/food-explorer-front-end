@@ -3,112 +3,220 @@ import { Link } from 'react-router-dom'
 
 export const Container = styled.header`
     grid-area: header;
-
-    width: 100%;
-
+    
     display: flex;
     align-items: center;
+    gap:1.6rem;
+    
     justify-content: space-around;
 
     background-color: ${({ theme }) => theme.COLORS.DARK_600};
-`
-
-export const Content = styled.div`
-    display: flex;
     
-    align-items: center;
-    
-    white-space: nowrap;
-    
-    a {
-        display: flex;
-        flex-direction: column;
-        align-items: end;
-        
-        color: ${({ theme }) => theme.COLORS.CAKE_100};
+    .mobile {
+        width: 100%;
 
-        img {
-            width: clamp(1.4rem, 25vh, 20rem);
-        }
-    }
-`
-
-export const Search = styled.div`
-    width: 50%;
-
-    border-radius: .5rem;
-
-    align-self: center;
-
-    background-color: ${({ theme }) => theme.COLORS.DARK_200};
-
-    label {
         display: flex;
         align-items: center;
-        padding-left: clamp(.8rem, 4vw, 1.6rem);
+        justify-content: space-around;
+    }
 
-        svg{
-            color: ${({ theme }) => theme.COLORS.LIGHT_400};
-        }
-    } 
-
-    input {
+    menu {
         width: 100%;
-        height: clamp(2.8rem, 4vw, 4.8rem);
 
-        background: transparent;
-        color: ${({ theme }) => theme.COLORS.LIGHT_300};
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        .icon {
+            cursor: pointer;
+
+            transition: all .5s ease-in-out;
+            
+            &:hover {
+                color: ${({ theme }) => theme.COLORS.CAKE_200};
+            }
+        }
         
-        padding: clamp(.8rem, 4vh, 1.6rem);
-
-        border: 0;
-
-        &::placeholder {
-            color: ${({ theme }) => theme.COLORS.LIGHT_700};
+        .close {
+            display: none;
         }
 
-        &:hover::placeholder{
-            color: ${({ theme }) => theme.COLORS.LIGHT_500};
+        .hide {
+            display: none;
         }
+
+        .show {
+            display: block;
+        }
+
     }
 
-`
+    a {
+        display: flex;
+        align-items: center;
 
-export const Profile = styled.div`
-    border: none;
+        color: ${({ theme }) => theme.COLORS.CAKE_100};
 
-    background: none;
+        transition: all .5s ease-in-out;
 
-    cursor: pointer;
-
-    img{
-        width: 3rem;
-        height: 3rem;
-
-        border-radius: 50%;
-
-        object-fit: cover;  
-    }
-`
-
-export const Dish = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
-
-export const Logout = styled(Link)`
-    display: flex;
-    align-self: center;
-
-    border: none;
-    background: none;
-
-    svg {
-        color: ${({ theme }) => theme.COLORS.CAKE_200};
-        
         &:hover {
-            color: ${({ theme }) => theme.COLORS.CAKE_100};
+            color: ${({ theme }) => theme.COLORS.CAKE_200};
+        }
+        
+        .welcome {
+            display: none;
+        }
+        
+        .mobileDish{
+            position: relative;
+            
+            color: ${({ theme }) => theme.COLORS.LIGHT_100};
+            
+            p {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                position: absolute;
+                top: -1.5rem;
+                right: -1rem;
+
+                width: 2.4rem;
+                height: 2.4rem;
+
+                background-color: ${({ theme }) => theme.COLORS.TOMATO_300};
+                
+                border-radius: 50%;
+            }
+        }
+
+        .desktopDish {
+            display: none;
+        }
+    }
+
+    .search{
+        border-radius: .5rem;
+
+        align-self: center;
+
+        background-color: ${({ theme }) => theme.COLORS.DARK_200};
+        
+        label {
+            display: flex;
+            align-items: center;
+            padding-left: clamp(.8rem, 4vw, 1.6rem);
+
+            svg{
+                color: ${({ theme }) => theme.COLORS.LIGHT_400};
+            }
+        } 
+
+        input {
+            width: 100%;
+            height: clamp(2.8rem, 4vw, 4.8rem);
+
+            background: transparent;
+            color: ${({ theme }) => theme.COLORS.LIGHT_300};
+    
+            padding: clamp(.8rem, 4vh, 1.6rem);
+
+            border: 0;
+
+            &::placeholder {
+                color: ${({ theme }) => theme.COLORS.LIGHT_700};
+            }
+
+            &:hover::placeholder{
+                color: ${({ theme }) => theme.COLORS.LIGHT_500};
+            }
+        }
+    }
+
+    nav {
+        display: none;
+    }
+
+    .active {
+        display: inline;
+
+        position: absolute;
+        left: 0;
+        top: 10rem;
+
+        width: 100%;
+        min-height: calc(100vh - 10rem);
+
+        padding: 3.2rem .8rem;
+
+        z-index: 999;
+
+        backdrop-filter: blur(1rem);
+    }
+
+    .links {
+        display: flex;
+        flex-direction: column;
+
+        margin-top: 3.2rem;
+
+        a {
+            padding: .8rem;
+
+            color: ${({ theme }) => theme.COLORS.LIGHT_300};
+
+            border-bottom: .1rem solid ${({ theme }) => theme.COLORS.DARK_100};
+        }
+    }
+
+    .desktop {
+        display: none;
+    }
+
+    @media only screen and (min-width: 700px) {
+        menu {
+           .mobile {
+                display: none;
+           }
+
+            .desktop {
+                width: 100%;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 3.2rem;
+
+                
+                a {
+                    color: ${({ theme }) => theme.COLORS.LIGHT_200};
+                }
+                
+                .logo {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: end;
+                   
+                    color: ${({ theme }) => theme.COLORS.CAKE_100};
+                }
+
+                .profile {
+                    border: none;
+
+                    background: none;
+
+                    cursor: pointer;
+
+                    img {
+                        width: 3rem;
+                        height: 3rem;
+
+                        border-radius: 50%;
+
+                        object-fit: cover;  
+                    }
+                }
+            }
         }
     }
 `
