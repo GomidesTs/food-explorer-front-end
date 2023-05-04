@@ -12,6 +12,7 @@ export default createGlobalStyle`
     
     -webkit-font-smoothing: antialiased;
     user-select: none;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -24,10 +25,6 @@ body, input, textarea {
     font-family: 'Roboto', sans-serif;
     font-size: clamp(1.4rem, 4vw, 1.8rem);
     outline: none;
-}
-
-button {
-    font-family: 'Poppins', sans-serif;
 }
 
 a {
@@ -44,6 +41,13 @@ button, a {
     }
 }
 
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Poppins', sans-serif;
+}
+
+span {
+    font-family: 'Roboto', sans-serif;
+}
 
 ::-webkit-scrollbar-track{
     background: ${({ theme }) => theme.COLORS.DARK_1000};
