@@ -5,6 +5,7 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 :root {
@@ -12,7 +13,6 @@ export default createGlobalStyle`
     
     -webkit-font-smoothing: antialiased;
     user-select: none;
-    font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -22,7 +22,6 @@ body {
 }
 
 body, input, textarea {
-    font-family: 'Roboto', sans-serif;
     font-size: clamp(1.4rem, 4vw, 1.8rem);
     outline: none;
 }
@@ -43,10 +42,6 @@ button, a {
 
 h1, h2, h3, h4, h5, h6{
     font-family: 'Poppins', sans-serif;
-}
-
-span {
-    font-family: 'Roboto', sans-serif;
 }
 
 ::-webkit-scrollbar-track{
