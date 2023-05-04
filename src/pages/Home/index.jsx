@@ -52,9 +52,9 @@ export function Home() {
 
             <Content>
                 <Banner>
+                    <div className='card'>
                     <img src={Food} alt='Biscoitos recheados e coloridos com frutinhas vermelhas e folhas caindo ao seu redor.' />
 
-                    <div className='card'>
                         <div className='title'>
                             <h1>Sabores inigualáveis</h1>
 
