@@ -16,6 +16,7 @@ export default {
         DARK_200: '#0D1D25',
         DARK_100: '#192227',
 
+        GRADIENTS_300: 'linear-gradient(180deg, #091E26 0%, #00131C 100%)',
         GRADIENTS_200: 'linear-gradient(90deg, #000204 0%, #000A0F 100%)',
         GRADIENTS_100: 'linear-gradient(90deg, #000204 0%, #00131C 100%)',
 
