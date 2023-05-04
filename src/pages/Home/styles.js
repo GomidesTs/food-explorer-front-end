@@ -20,60 +20,82 @@ export const Content = styled.main`
 `
 
 export const Banner = styled.section`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    max-width: 120rem;
+    margin: auto;
+    padding: 2rem;
 
-    text-align: center;
-
-    .card {
-        background: ${({ theme }) => theme.COLORS.GRADIENTS_100};
-
-        border-radius: 2rem;
-
+    .card{
         position: relative;
 
-        padding: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: end;
 
-        .title {
-            padding: 1rem;
+        padding-right: 1rem;
+
+        width: 100%;
+        min-height: 12rem;
+         
+        background: ${({theme}) => theme.COLORS.GRADIENTS_300};
+        
+        border-radius: .8rem;
+
+        .title{
+            width: 50%;
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: end;
 
             h1 {
-                line-height: 140%;
-                font-size: clamp(2rem, 4vw, 4rem);
-                font-weight: 500;
-
-                padding-bottom: .8rem;
+                font-size: 1.8rem;
             }
 
-            span {
-                font-size: clamp(1.4rem, 2.5vw, 2rem);
+            span{
+                font-size: 1.2rem;
             }
         }
-    }
+        
+        img {
+            position: absolute;
+            left: -3rem;
+            top: -1rem;
+                
+            max-height: 13.5rem;
 
-    img {
-        width: 50%;
-        margin-bottom: -2.7rem;
-        z-index: -1;
+            object-fit: fill;
+        }
     }
 
     @media only screen and (min-width: 1000px) {
-        flex-direction: row;
-        
         .card {
-            .title {
-                width: 100%;
-                height: 26rem;
+            padding-right: 3.2rem;
+            min-height: 31rem;
+            
+            .title{
+                width: 50%;
 
-                padding: 8.7rem 4.6rem 0 0;
+                display: flex;
+                flex-direction: column;
 
+                justify-content: end;
+
+                h1 {
+                    font-size: 4rem;
+                }
+
+                span{
+                    font-size: 1.6rem;
+                }
             }
-        }
-
-        img {
-            width: 30%;
+            
+            img {
+                left: -10rem;
+                top: -5rem;
+                
+                max-height: 37.2rem;
+            }
         }
     }
 `
