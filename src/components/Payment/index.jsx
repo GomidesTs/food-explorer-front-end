@@ -13,7 +13,7 @@ import { Input } from '../Input'
 import qrCode from '../../assets/qrCodePix.png'
 import clock from '../../assets/clock.png'
 import check from '../../assets/checkCircle.png'
-import forkKnife from '../../assets/ForkKnife.png'
+import forkKnife from '../../assets/forkKnife.png'
 
 export function Payment() {
     const [paymentMethod, setPaymentMethod] = useState('')
