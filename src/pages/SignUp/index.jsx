@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { RiEyeOffLine, RiEyeLine } from 'react-icons/ri'
 
 import { Container, Form } from './styles'
 
@@ -15,6 +16,7 @@ export function SignUp() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(false)
+    const [showPassword, setShowPassword] = useState(false)
 
     const navigate = useNavigate()
 
@@ -53,6 +55,10 @@ export function SignUp() {
         }
     }
 
+    function handleTogglePassword() {
+        setShowPassword(!showPassword)
+    }
+
     return (
         <Container>
             <img src={LogoFoodExplore} alt='Logo do restaurante fictício Food Explore, este logo tem um losango na cor azul-escuro e ao lago escrito Food Explore na cor branca.' />
@@ -86,13 +92,19 @@ export function SignUp() {
                     <div className='information'>
                         <label htmlFor='password'>Senha</label>
 
-                        <Input
-                            id='password'
-                            type='text'
-                            placeholder='No mínimo 6 caracteres'
-                            onChange={e => setPassword(e.target.value)}
-                            onKeyDown={handleKeyDown}
-                        />
+                        <div>
+                            <Input
+                                id='password'
+                                type={showPassword ? 'text' : 'password'}
+                                placeholder='No mínimo 6 caracteres'
+                                onChange={e => setPassword(e.target.value)}
+                                onKeyDown={handleKeyDown}
+                            />
+
+                            <span onClick={handleTogglePassword}>
+                                {showPassword ? <RiEyeOffLine size={22} /> : <RiEyeLine size={22} />}
+                            </span>
+                        </div>
                     </div>
 
                     <Button
