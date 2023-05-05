@@ -53,7 +53,8 @@ export const Dish = styled.section`
         }
 
         img {
-                width: 100%;
+                width: 20rem;
+                height: 20rem;
 
                 border-radius: 50%;
 

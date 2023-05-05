@@ -22,11 +22,18 @@ export const Dishes = styled.div`
     max-width: 120rem;
     
     margin: 0 auto;
-    `
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    @media only screen and (min-width: 600px) {
+        text-align: left;
+    }
+`
 
 export const Options = styled.div`
     max-width: 100rem;
-    margin: 0 auto;
 
     display: flex;
     flex-wrap: wrap;

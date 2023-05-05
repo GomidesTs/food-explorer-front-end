@@ -12,4 +12,8 @@ export const Container = styled.footer`
     align-items: center;
     justify-content: space-around;
     align-self: end;
+
+    p {
+        font-size: 1.2rem;
+    }
 `;
