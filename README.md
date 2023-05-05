@@ -65,7 +65,7 @@ O servidor deste projeto foi hospedado no [Render](https://render.com/), um serv
 
 Por outro lado, o front-end foi hospedado na plataforma [Netlify](https://www.netlify.com/), que permite hospedar sites e aplicativos web de forma gratuita. Para que o front-end funcione corretamente, é fundamental que o servidor de back-end esteja em funcionamento e respondendo corretamente. Caso contrário, o front-end pode apresentar erros ou comportamentos inesperados.
 
-[O resultado FINAL pode ser visto aqui](https://64556a8bd6cfc70008e4aebe--delicate-belekoy-60cb5c.netlify.app/)
+[O resultado FINAL pode ser visto aqui](https://delicate-belekoy-60cb5c.netlify.app/)
 
 ## Capturas de tela
 
