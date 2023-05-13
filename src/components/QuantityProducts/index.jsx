@@ -15,7 +15,7 @@ export function QuantityProducts({ dish_id, price }) {
     function increase(amount) {
         if (amount > 20) {
             alert('Erro: A quantidade máxima é de 20 unidades')
-            return;
+            return
         }
 
         setQuantity(amount)

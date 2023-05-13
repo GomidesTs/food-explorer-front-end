@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { RiHeartFill, RiArrowRightSLine, RiEditLine } from 'react-icons/ri';
+import { RiHeartFill, RiArrowRightSLine, RiEditLine } from 'react-icons/ri'
 
 import { api } from '../../services/api'
 import { useAuth } from '../../hooks/auth'
@@ -21,13 +21,13 @@ export function Card({ data, ...rest }) {
         api.post('/favorites', { id: data.id })
             .then(() => {
                 setFavorite(true)
-                alert('Prato adcionado aos favoritos')
+                alert('Prato adicionado aos favoritos')
             })
             .catch(error => {
                 if (error.response) {
                     alert(error.response.data.message)
                 } else {
-                    alert('Não foi adcionar prato aos favoritos')
+                    alert('Não foi adicionar produto aos favoritos')
                 }
             })
     }
@@ -42,7 +42,7 @@ export function Card({ data, ...rest }) {
                 if (error.response) {
                     alert(error.response.data.message)
                 } else {
-                    alert('Não foi possível remover prato dos favoritos')
+                    alert('Não foi possível remover o prato de favoritos')
                 }
             })
     }

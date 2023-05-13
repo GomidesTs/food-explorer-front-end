@@ -33,7 +33,7 @@ export function Orders() {
         const cart = {
             id: order.id,
             orderStatus: statusSelected,
-        };
+        }
 
         await api.put('/orders', cart)
             .then(() => {

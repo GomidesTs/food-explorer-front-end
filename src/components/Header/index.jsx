@@ -8,7 +8,7 @@ import { useAuth } from '../../hooks/auth'
 
 import { Container } from './styles'
 
-import { Button } from '../Button';
+import { Button } from '../Button'
 
 import LogoFoodExplore from '../../assets/LogoFoodExplore.svg'
 import avatarPlaceholder from '../../assets/avatarPlaceholder.svg'
@@ -151,7 +151,7 @@ export function Header({ search }) {
                     <Link to='/orders'>Histórico de pedidos</Link>
 
                     <Link to={'/profile'} className='profile'>
-                        <img src={avatarURL} alt="" />
+                        <img src={avatarURL} alt='Avatar do usuário' />
                     </Link>
 
                     {

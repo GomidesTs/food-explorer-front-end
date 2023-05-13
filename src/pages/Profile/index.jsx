@@ -82,8 +82,8 @@ export function Profile() {
                     <label htmlFor='avatar'>
                         <RiCamera3Fill />
                         <input
-                            type="file"
-                            id="avatar"
+                            type='file'
+                            id='avatar'
                             onChange={handleChangeAvatar}
                         />
                     </label>

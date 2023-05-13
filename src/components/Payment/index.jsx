@@ -201,7 +201,7 @@ export function Payment() {
                 isClockActive &&
                 <Content>
                     <div className='paymentMethod'>
-                        <img src={clock} alt="" />
+                        <img src={clock} alt='Imagem de um relógio' />
                         <p>Aguardando pagamento no caixa</p>
                     </div>
                 </Content>
@@ -211,7 +211,7 @@ export function Payment() {
                 isCheckActive &&
                 <Content>
                     <div className='paymentMethod'>
-                        <img src={check} alt="" />
+                        <img src={check} alt='Imagem de um check' />
                         <p>Pagamento aprovado!</p>
                     </div>
                 </Content>
@@ -221,7 +221,7 @@ export function Payment() {
                 isConcluded &&
                 <Content>
                     <div className='paymentMethod'>
-                        <img src={forkKnife} alt="" />
+                        <img src={forkKnife} alt='Imagem de um garfo e faca' />
                         <p>Pagamento aprovado!</p>
                     </div>
                 </Content>

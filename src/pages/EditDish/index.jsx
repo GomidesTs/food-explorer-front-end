@@ -127,9 +127,9 @@ export function EditDish() {
         if (isConfirm) {
             await api.delete(`/dishes/${params.id}`)
                 .then(() => {
-                    alert("Item removido com sucesso!")
+                    alert('Item removido com sucesso!')
 
-                    navigate("/")
+                    navigate('/')
                     
                     setLoadingDelete(false)
                 })
@@ -232,7 +232,7 @@ export function EditDish() {
 
                                     <NewIngredients
                                         isNew
-                                        placeholder="Adicionar"
+                                        placeholder='Adicionar'
                                         onChange={e => setNewIngredient(e.target.value)}
                                         value={newIngredient}
                                         onClick={handleAddIngredient}

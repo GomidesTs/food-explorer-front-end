@@ -1,6 +1,6 @@
-import { Container } from './styles';
+import { Container } from './styles'
 
-import { RiAddFill, RiSubtractFill } from 'react-icons/ri';
+import { RiAddFill, RiSubtractFill } from 'react-icons/ri'
 
 export function NewIngredients({ isNew, value, onClick, ...rest }) {
     return (

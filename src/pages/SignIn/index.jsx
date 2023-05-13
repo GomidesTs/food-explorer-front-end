@@ -23,7 +23,7 @@ export function SignIn() {
     }
 
     function handleKeyDown(e) {
-        if (e.key === "Enter") {
+        if (e.key === 'Enter') {
             handleSignIn()
         }
     }
@@ -71,13 +71,13 @@ export function SignIn() {
                     </div>
 
                     <Button
-                        title={loading ? "Entrando" : "Entrar"}
+                        title={loading ? 'Entrando' : 'Entrar'}
                         onClick={handleSignIn}
                         disabled={loading}
                     />
                 </fieldset>
 
-                <Link to="/register">
+                <Link to='/register'>
                     Criar uma conta
                 </Link>
             </Form>

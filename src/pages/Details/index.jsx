@@ -41,9 +41,9 @@ export function Details() {
         if (isConfirm) {
             await api.delete(`/dishes/${params.id}`)
                 .then(() => {
-                    alert("Item removido com sucesso!")
+                    alert('Item removido com sucesso!')
 
-                    navigate("/")
+                    navigate('/')
 
                     setLoadingDelete(false)
                 })
