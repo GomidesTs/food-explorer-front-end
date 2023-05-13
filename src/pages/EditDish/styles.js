@@ -153,7 +153,16 @@ export const Form = styled.form`
 
             button {
                 &:nth-child(1){
-                    background-color: ${({ theme }) => theme.COLORS.DARK_300};
+                    background: none;
+                    border: .2rem dashed ${({ theme }) => theme.COLORS.DARK_100};
+                    padding: 0;
+
+                    transition: .5s all ease;
+
+                    &:hover {
+                        border: none;
+                        background: ${({ theme }) => theme.COLORS.DARK_100};
+                    }
                 }
             }
         }
