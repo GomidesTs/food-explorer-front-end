@@ -53,6 +53,7 @@ export const Options = styled.div`
 
     @media only screen and (min-width: 600px) {
         flex-direction: row;
+        align-self: start;
         justify-content: start;
     }
 `
